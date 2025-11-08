@@ -1,0 +1,443 @@
+/* About Page Specific Styles */
+
+/* About Hero */
+.about-hero {
+    padding: 150px 0 80px;
+    background: linear-gradient(135deg, var(--gray-light) 0%, #e8f4fd 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.about-hero h1 {
+    margin-bottom: 20px;
+}
+
+.about-hero p {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Founders Section */
+.founders-section {
+    padding: 100px 0;
+    background: white;
+    position: relative;
+}
+
+.founders-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.founder-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    height: 400px;
+    border: 2px solid transparent;
+}
+
+.founder-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-blue);
+}
+
+.founder-card.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 90vw;
+    max-width: 800px;
+    height: 80vh;
+    z-index: 10000;
+    border-color: var(--primary-blue);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.founder-image {
+    height: 200px;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.founder-card.expanded .founder-image {
+    height: 250px;
+}
+
+.founder-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.image-placeholder {
+    text-align: center;
+    color: white;
+}
+
+.image-placeholder span {
+    font-size: 80px;
+    opacity: 0.8;
+}
+
+.founder-info {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.founder-card.expanded .founder-info {
+    padding: 40px;
+}
+
+.founder-info h3 {
+    color: var(--text-dark);
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.founder-info h4 {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.founder-info p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.founder-social {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: 2px solid var(--primary-blue);
+    border-radius: 25px;
+    transition: var(--transition-base);
+}
+
+.social-icon:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-blue);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10001;
+}
+
+.close-btn:hover {
+    background: var(--dark-blue);
+    transform: scale(1.1);
+}
+
+/* Enhanced Bio Content */
+.enhanced-bio {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--gray-light);
+}
+
+.founder-card.expanded .enhanced-bio {
+    display: block;
+}
+
+.bio-section {
+    margin-bottom: 20px;
+}
+
+.bio-section h5 {
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.bio-section p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.achievements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.achievement-tag {
+    background: var(--gray-light);
+    color: var(--primary-blue);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Journey Section */
+.journey-section {
+    padding: 100px 0;
+    background: var(--gray-light);
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 60px auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--primary-blue);
+    opacity: 0.3;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 40px 0;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 50%;
+    padding-right: 60px;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 50%;
+    padding-left: 60px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: var(--primary-blue);
+    border: 4px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(0, 128, 255, 0.2);
+}
+
+.timeline-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-base);
+}
+
+.timeline-content:hover {
+    box-shadow: var(--shadow-lg);
+    transform: scale(1.02);
+}
+
+.timeline-content h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+}
+
+.timeline-content p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Team Photo Section */
+.team-photo-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.team-photo-wrapper {
+    text-align: center;
+}
+
+.team-photo-placeholder {
+    height: 500px;
+    background: linear-gradient(135deg, var(--gray-light), var(--gray-medium));
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--text-light);
+    box-shadow: var(--shadow-lg);
+}
+
+.team-photo-placeholder p {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Values Section */
+.values-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.value-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-base);
+}
+
+.value-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: var(--shadow-xl);
+}
+
+.value-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.value-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.value-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .founders-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 70px;
+        margin-right: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: left;
+    }
+
+    .timeline-marker {
+        left: 30px;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-photo-placeholder {
+        height: 300px;
+    }
+}
