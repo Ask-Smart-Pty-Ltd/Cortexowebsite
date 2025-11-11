@@ -686,17 +686,13 @@ section {
         margin-bottom: 40px;
     }
     
-    /* FIX 1: Remove flex-direction: column if you want to rely on wrapping */
+    /* FIX: Explicitly re-enable wrapping for mobile view */
     .mission-grid {
-        /* This line should be present in the main CSS or a wider media query: */
-        /* flex-wrap: wrap; */ 
-        
-        /* Remove or comment out these lines if they are not needed: */
-        /* flex-direction: column; */
-        /* align-items: center; */
+        flex-wrap: wrap; 
+        justify-content: center;
     }
 
-    /* FIX 2: Ensure cards take up nearly 100% of the space to stack clearly */
+    /* Ensure cards take up nearly full width to stack */
     .mission-card {
         flex: 1 1 95%; /* Make card take up almost full width */
         max-width: 95%; /* Ensure no more than 95% width */
