@@ -1259,3 +1259,101 @@ section {
         font-size: 1.6em;
     }
 }
+
+/* --- Social Proof Grid Section (Fixed Layout for 3 Cards) --- */
+
+.social-proof-section {
+    padding: 60px 0 0; 
+    background-color: #f5f5f5; /* Light background for contrast */
+}
+
+.social-proof-section .section-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.social-proof-section h2 {
+    color: var(--text-dark);
+}
+
+.proof-grid-container {
+    /* FIX 1: Use flex to center the grid block within its max-width */
+    display: flex;
+    justify-content: center;
+    max-width: 1200px; 
+    margin: 0 auto;
+    overflow: hidden; 
+}
+
+.proof-grid {
+    display: grid;
+    /* FIX 2: Uses auto-fit/minmax for responsiveness, allowing up to 3 columns on wide screens */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+    
+    /* FIX 3: Set a max-width for the grid itself to control its size when centered */
+    max-width: 1000px; 
+    
+    padding: 0; 
+}
+
+.proof-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    
+    min-height: 150px; 
+    
+    /* FIX 4: Remove margin-top staggering */
+    margin-top: 0; 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quote-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-blue); /* Placeholder color (adjust as needed) */
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.profile-name {
+    font-size: 1em;
+    color: var(--text-dark);
+    font-weight: 700;
+    margin: 0;
+}
+
+.profile-tag {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* Media Query for Mobile: Stack cards */
+@media (max-width: 600px) {
+    .proof-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+}

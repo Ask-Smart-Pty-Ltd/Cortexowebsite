@@ -615,3 +615,47 @@
         width: 280px; /* Slightly smaller on mobile */
     }
 }
+
+/* Styling for the new Problem and Vision Introduction Block */
+.problem-vision-intro-block {
+    /* Centered block spanning max width */
+    max-width: 900px; 
+    margin: 20px auto 60px auto; 
+    text-align: center; /* Center the entire block's content */
+}
+
+.problem-statement,
+.vision-statement {
+    /* Reset flex properties */
+    width: 100%; 
+    padding: 0 15px; /* Add slight horizontal padding */
+    margin-bottom: 30px; /* Space between Problem and Vision */
+}
+
+.vision-statement {
+    margin-bottom: 0; /* No margin below the vision statement */
+}
+
+.intro-title {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-align: center; /* Center the title */
+}
+
+.problem-statement p,
+.vision-statement p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    max-width: 750px; /* Limit width for readability */
+    margin: 0 auto; /* Center the paragraph text */
+}
+
+/* Ensure the cards below still look good after this block */
+@media (max-width: 768px) {
+    .problem-vision-intro-block {
+        margin-bottom: 40px;
+    }
+}
