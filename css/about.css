@@ -66,7 +66,16 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     position: relative;
-    height: 400px;
+    
+    /* FIX 1: Increase minimum height to accommodate longer text */
+    min-height: 480px; 
+    height: auto; /* Allow height to adjust if content requires more than min-height */
+    
+    /* FIX 2: Set card to flex container to manage vertical space */
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between; 
+    
     border: 2px solid transparent;
 }
 
@@ -98,6 +107,8 @@
     position: relative;
     overflow: hidden;
     transition: height 0.3s ease;
+    /* Ensure image area doesn't grow unexpectedly */
+    flex-shrink: 0; 
 }
 
 .founder-card.expanded .founder-image {
@@ -127,20 +138,38 @@
 .founder-info {
     padding: 30px;
     flex-grow: 1;
-    display: flex;
+    /* FIX 3: Make founder-info a flex container to manage vertical content flow */
+    display: flex; 
     flex-direction: column;
-    overflow-y: auto;
+    
+    /* Keep overflow-y: auto only if expanded/modal card needs scroll, otherwise rely on the main card scroll for now */
+    /* overflow-y: auto; */ 
+    
+    /* FIX 4: Ensure content inside fills vertical space and pushes social button down */
+    justify-content: space-between; 
 }
 
 .founder-card.expanded .founder-info {
     padding: 40px;
+    overflow-y: auto; /* Enable scroll when expanded */
 }
 
 .founder-info h3 {
     color: var(--text-dark);
     margin-bottom: 5px;
     font-size: 1.5rem;
+    flex-shrink: 0; /* Prevents title from shrinking */
 }
+
+/* New Role Oneliner Style */
+.founder-info .role-oneliner {
+    color: var(--text-light);
+    line-height: 1.4;
+    margin-bottom: 20px; /* Space between role and social link */
+    font-weight: 500;
+}
+/* End New Role Oneliner Style */
+
 
 .founder-info h4 {
     color: var(--primary-blue);
@@ -158,6 +187,10 @@
 .founder-social {
     display: flex;
     gap: 15px;
+    /* FIX 5: Use margin-top: auto to push this to the bottom edge of the available space */
+    margin-top: auto;
+    padding-top: 10px; /* Small buffer above the button */
+    flex-shrink: 0; /* Prevents social links area from shrinking */
 }
 
 .social-icon {

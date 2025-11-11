@@ -563,67 +563,151 @@ section {
 
 /* Mission Section */
 .mission-section {
-    background: var(--gray-light);
+    padding: 80px 0; /* Adjust padding as needed */
+    background-color: #f8f9fa; /* Light background for the section */
+    text-align: center; /* Center the mission title/subtitle */
 }
 
+.mission-section .container {
+    max-width: 1200px; /* Adjust max-width as needed */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.section-header {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2.5em; /* Adjust font size */
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    font-size: 1.2em;
+    color: #555;
+    line-height: 1.6;
+    max-width: 800px; /* Limit width for readability */
+    margin: 0 auto;
+}
+
+/* --- Our Why Section Styling --- */
+.why-container {
+    margin: 40px auto 60px auto; /* Top, Right/Left auto (for centering), Bottom */
+    max-width: 900px; /* Adjust max width for the why text */
+    padding: 0 20px;
+    text-align: center; /* Ensures the why text is centered */
+}
+
+.why-title {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.why-text, .why-conclusion {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.why-conclusion {
+    font-weight: bold;
+    color: #444;
+}
+
+/* --- Mission Grid for Values Cards --- */
 .mission-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    display: flex;
+    /* FIX: Change 'wrap' to 'nowrap' to force cards onto a single row */
+    flex-wrap: nowrap;
+    justify-content: center;
+    /* FIX: Slightly reduced gap for a tighter fit */
+    gap: 20px;
+    margin-top: 50px;
+    /* FIX: Add this if you still see wrapping on very large screens */
+    /* overflow-x: auto; */
 }
 
 .mission-card {
-    background: white;
-    padding: 40px;
-    border-radius: 16px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 30px;
     text-align: center;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition-base);
-    position: relative;
-    border: 2px solid transparent;
-}
-
-.mission-card::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: var(--gradient-primary);
-    border-radius: 16px;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    /* FIX: Change flex properties to ensure 4 cards fit on one row */
+    /* Use flex-basis around 23% to leave space for 3 gaps (20px each) */
+    flex: 0 0 23%;
+    max-width: 250px; /* Reduced max width for safety */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .mission-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
-    border-color: transparent;
-}
-
-@keyframes borderGlow {
-    from { opacity: 0.3; }
-    to { opacity: 0.8; }
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
 .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background-color: #e6f7ff; /* Light blue background for icons */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
 }
 
 .icon-placeholder {
-    font-size: 48px;
+    font-size: 3em; /* Size of the emoji icon */
+    line-height: 1; /* Ensure emoji is centered */
 }
 
 .mission-card h3 {
-    margin-bottom: 15px;
-    color: var(--primary-blue);
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
 }
 
 .mission-card p {
-    color: var(--text-light);
+    font-size: 1em;
+    color: #777;
+    line-height: 1.5;
 }
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    /* FIX 1: Remove flex-direction: column if you want to rely on wrapping */
+    .mission-grid {
+        /* This line should be present in the main CSS or a wider media query: */
+        /* flex-wrap: wrap; */ 
+        
+        /* Remove or comment out these lines if they are not needed: */
+        /* flex-direction: column; */
+        /* align-items: center; */
+    }
+
+    /* FIX 2: Ensure cards take up nearly 100% of the space to stack clearly */
+    .mission-card {
+        flex: 1 1 95%; /* Make card take up almost full width */
+        max-width: 95%; /* Ensure no more than 95% width */
+        margin: 10px 0; /* Add vertical spacing between stacked cards */
+    }
+    .mission-section {
+        padding: 60px 0;
+    }
+}
+
+
 
 /* Products Overview */
 .products-overview {
@@ -1030,5 +1114,148 @@ section {
     .info-card {
         flex: 1 1 100%;
         max-width: 400px;
+    }
+}
+
+/* --- Detailed Journey Section Styling --- */
+.detailed-journey-section {
+    padding: 80px 0;
+    background-color: #fff; /* White background for this section */
+    text-align: center; /* Center the main title */
+}
+
+.detailed-journey-section .container {
+    max-width: 1000px; /* Adjust max-width as needed */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Ensure consistent header styling with other sections */
+.detailed-journey-section .section-header {
+    margin-bottom: 60px;
+}
+
+.detailed-journey-section .section-title {
+    font-size: 2.5em; /* Match your main section titles */
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Sub-sections within the journey */
+.journey-subsection {
+    margin-bottom: 60px; /* Space between subsections */
+    max-width: 800px; /* Max width for content readability */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; /* Aligns text left within the subsection, centered block overall */
+}
+
+.journey-subsection:last-child {
+    margin-bottom: 0; /* No bottom margin for the last subsection */
+}
+
+.subsection-title {
+    font-size: 2em; /* Title for "How It Started", "Our Milestones", etc. */
+    color: #333;
+    margin-bottom: 25px;
+    text-align: left; /* Ensures sub-titles are left-aligned */
+}
+
+/* Styling for the central question block */
+.key-question {
+    font-style: italic;
+    font-size: 1.3em;
+    color: #4a90e2; /* A standout color for the quote */
+    padding: 20px 30px;
+    margin: 30px 0; /* Increased margin for better separation */
+    border-left: 5px solid #4a90e2;
+    background-color: #f0f8ff; /* Light blue background for the quote */
+    line-height: 1.6;
+    text-align: center; /* Keep the quote centered */
+    border-radius: 5px;
+}
+
+/* Styling for the milestones list */
+.milestone-list, .learned-list {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    text-align: left; /* Align list items to the left */
+    max-width: 700px; /* Adjust max width for the list content */
+    margin: 0 auto; /* Center the list block */
+}
+
+.milestone-list li, .learned-list li {
+    font-size: 1.1em;
+    padding: 12px 0; /* Vertical padding for each list item */
+    border-bottom: 1px dashed #eee; /* Subtle separator between items */
+    display: flex; /* Allows icon and text to be on the same line */
+    align-items: flex-start; /* Aligns items to the top if text wraps */
+    line-height: 1.6;
+    color: #555;
+}
+
+.milestone-list li:last-child, .learned-list li:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+
+.milestone-list .icon {
+    font-size: 1.5em; /* Size of the emoji icon */
+    margin-right: 15px; /* Space between icon and text */
+    line-height: 1; /* Ensures icon is vertically centered with the first line of text */
+    flex-shrink: 0; /* Prevent icon from shrinking on smaller screens */
+    color: #4a90e2; /* Optional: give icons a brand color */
+}
+
+/* Specific styling for 'What We've Learned' list for a slightly different look */
+.learned-list li {
+    font-weight: 500;
+    font-size: 1.15em; /* Slightly larger font */
+    border: none; /* No border for these specific list items */
+    padding: 8px 0;
+    justify-content: flex-start; /* Left align content */
+}
+.learned-list li::before {
+    content: "•"; /* Custom bullet point */
+    color: #4a90e2; /* Color for the custom bullet */
+    display: inline-block;
+    width: 1em; /* Space for the bullet */
+    margin-left: -1em; /* Pull bullet slightly left */
+    margin-right: 0.5em;
+}
+
+/* Responsive Adjustments for Journey Section */
+@media (max-width: 768px) {
+    .detailed-journey-section .section-title {
+        font-size: 2em;
+    }
+    .subsection-title {
+        font-size: 1.8em;
+    }
+    .key-question {
+        font-size: 1.1em;
+        padding: 15px 20px;
+    }
+    .milestone-list li, .learned-list li {
+        font-size: 1em;
+        padding: 8px 0;
+    }
+    .milestone-list .icon {
+        font-size: 1.3em;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .detailed-journey-section {
+        padding: 40px 0;
+    }
+    .detailed-journey-section .section-header {
+        margin-bottom: 40px;
+    }
+    .journey-subsection {
+        margin-bottom: 40px;
+    }
+    .subsection-title {
+        font-size: 1.6em;
     }
 }
